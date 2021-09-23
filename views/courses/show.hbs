@@ -1,0 +1,210 @@
+<section id="hero_in" class="courses">
+    <div class="container">
+        <div class="jumbotron text-left">
+            {{#if error_msg}}
+            <div class="alert alert-danger" role="alert">
+                {{error_msg}}
+            </div>
+            {{/if}}
+
+            {{#if success_msg}}
+            <div class="alert alert-success" role="alert">
+                {{success_msg}}
+            </div>
+            {{/if}}
+
+
+            {{#if course.isComplete}}
+            <h4>{{course.title}}</h4>
+            {{else}}
+            <h4>{{course.title}} (unfinished)</h4>
+            {{/if}}
+
+            <h6 class="lead">{{course.subtitle}}</h6>
+            <hr class="my-4">
+            <span>
+                {{course.rating}}
+            </span>
+            <div id="showCourse"></div>
+            ({{course.reviews.length}} ratings) {{course.students.length}} students
+
+            <p class="my-1">Created by {{course.instructor.name}}</p>
+            <p class="my-1">Last updated {{getLastUpdatedString course.updatedAt}}</p>
+
+            {{#checkUploadedCourseOwnership currentUser course}}
+            <a href="/it/{{course.field.name}}/courses/{{course._id}}/edit" class="btn btn-info">Edit this course</a>
+            {{/checkUploadedCourseOwnership}}
+
+        </div>
+    </div>
+</section>
+
+
+<div class="bg_color_1">
+    <nav class="secondary_nav sticky_horizontal">
+        <div class="container">
+            <ul class="clearfix">
+                <li><a href="#description" class="active">Description</a></li>
+                <li><a href="#lessons">Lessons</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container margin_60_35">
+        <div class="row">
+            <div class="col-lg-8">
+
+                <section id="description">
+                    <h2>Description</h2>
+                    <p>
+                        {{{course.description}}}
+                    </p>
+                </section>
+
+                <section id="lessons">
+                    <div class="intro_title">
+                        <h2>Lessons</h2>
+                    </div>
+                    <div id="accordion_lessons" role="tablist" class="add_bottom_45">
+                        {{{generateCurriculum course.curriculum}}}
+                    </div>
+
+                </section>
+
+                <section id="recommendedCourses">
+                    <h2>You may also like</h2>
+
+                    {{#each recommendedCourses}}
+                    <div class="box_list wow">
+                        <div class="row no-gutters">
+                            <div class="col-lg-5">
+                                <figure class="block-reveal">
+                                    <div class="block-horizzontal"></div>
+                                    <a href="/it/{{this.field.name}}/courses/{{this._id}}"><img
+                                            src="{{this.image3xURL}}" alt=""></a>
+                                </figure>
+                            </div>
+                            <div class="col-lg-7">
+                                <div class="wrapper">
+                                    <a href="#" class="wish_bt"></a>
+                                    <div class="price">
+                                        ${{this.discountPrice}}
+                                        <span class="original_price"><em>${{this.originalPrice}}</em></span>
+                                    </div>
+                                    <small>{{getFieldName this.field.name}}</small>
+                                    <h3>{{this.title}}</h3>
+                                    <p>{{this.instructor.name}}</p>
+
+                                    <div class="rating">
+                                        <span>{{this.rating}}</span>
+                                        <div class="ratingStar"></div> ({{this.reviews.length}} ratings)
+                                    </div>
+
+                                </div>
+                                <ul>
+                                    <li><i class="fas fa-file-signature"></i> {{this.totalStudents}}</li>
+                                    <li><i class="fas fa-pen-alt"></i> {{getTimeAgo this.updatedAt}}</li>
+
+                                    {{#generateBestSeller this.totalStudents}}
+                                    <h5><span id="bestseller" class="badge">Bestseller</span></h5>
+                                    {{/generateBestSeller}}
+
+                                    {{#generateNew this.updatedAt}}
+                                    <h5><span id="new" class="badge">New</span></h5>
+                                    {{/generateNew}}
+
+                                    <!-- <li><a href="#">Enroll now</a></li> -->
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+
+                </section>
+
+                <section id="instructor">
+                    <h2>Instructor</h2>
+                    <a href="">{{course.instructor.name}}</a>
+                    {{{course.instructor.briefIntroduction}}}
+                </section>
+
+                <section id="reviews">
+                    <h2>Reviews</h2>
+                    <hr>
+
+                    <div id="reviewRatings" class="reviews-container">
+                        {{#each course.reviews as |review|}}
+                        <div class="review-box clearfix">
+                            <figure class="rev-thumb"><img src="http://via.placeholder.com/150x150/ccc/fff/avatar3.jpg"
+                                    alt="">
+                            </figure>
+                            <div class="rev-content">
+                                <div class="rev-info">
+                                    <b>{{review.author.name}}</b> – {{getTimeAgo review.createdAt}}
+                                </div>
+                                <div class="rev-text">
+                                    <div class="rating">
+                                        <span>{{review.rating}}</span>
+                                        <div class="ratingStar"></div>
+                                    </div>
+                                    <p>
+                                        {{review.body}}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+
+                    </div>
+
+                </section>
+
+            </div>
+
+
+            <aside class="col-lg-4" id="sidebar">
+                <div class="box_detail">
+                    <figure>
+                        <a href="/it/{{course.field.name}}/courses/{{course._id}}/preview" class="video"><i
+                                class="arrow_triangle-right"></i><img src="{{course.image3xURL}}" alt=""
+                                class="img-fluid"><span>View course preview</span></a>
+                    </figure>
+                    <div class="price">
+                        ${{course.discountPrice}}<span
+                            class="original_price"><em>${{course.originalPrice}}</em>{{calculateDiscountPercentage
+                            course.discountPrice course.originalPrice}}%
+                            off</span>
+                    </div>
+                    {{#if isPurchased}}
+                    <a href="/it/{{course.field.name}}/courses/{{course._id}}/learn" class="btn_1 full-width">Purchased
+                        ! Go to
+                        course</a>
+                    {{else}}
+                    <a href="/it/{{course.field.name}}/courses/{{course._id}}/purchase"
+                        class="btn_1 full-width">Purchase</a>
+                    {{/if}}
+
+                    {{#if isWishlisted}}
+                    <a href="/it/{{course.field.name}}/courses/{{course._id}}/wishlist"
+                        class="btn_1 full-width outline"><i class="icon_heart"></i> Wishlisted</a>
+                    {{else}}
+                    <a href="/it/{{course.field.name}}/courses/{{course._id}}/wishlist"
+                        class="btn_1 full-width outline"><i class="icon_heart"></i> Add to wishlist</a>
+                    {{/if}}
+                    <div id="list_feat">
+                        <h3>What's includes</h3>
+                        <ul>
+                            <li><i class="icon_mobile"></i>Mobile support</li>
+                            <li><i class="icon_archive_alt"></i>Lesson archive</li>
+                            <li><i class="icon_mobile"></i>Mobile support</li>
+                            <li><i class="icon_chat_alt"></i>Tutor chat</li>
+                            <li><i class="icon_document_alt"></i>Course certificate</li>
+                        </ul>
+                    </div>
+                </div>
+            </aside>
+        </div>
+
+    </div>
+
+</div>

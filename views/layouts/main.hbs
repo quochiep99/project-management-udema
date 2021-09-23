@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Udema a modern educational site template">
+    <meta name="author" content="Ansonika">
+    <title>UDEMA | Modern Educational site template</title>
+
+    <!-- Favicons-->
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon" href="/img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="/img/apple-touch-icon-72x72-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
+        href="/img/apple-touch-icon-114x114-precomposed.png">
+    <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
+        href="/img/apple-touch-icon-144x144-precomposed.png">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+
+    <!-- GOOGLE WEB FONT -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800" rel="stylesheet">
+
+    <!-- BASE CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- <link rel="stylesheet" href="/css/bootstrap.min.css"> -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/vendors.css" rel="stylesheet">
+    <link href="/css/icon_fonts/css/all_icons.min.css" rel="stylesheet">
+
+    <!-- SPECIFIC CSS -->
+    <link href="/layerslider/css/layerslider.css" rel="stylesheet">
+    <link href="/css/skins/square/grey.css" rel="stylesheet">
+
+    <!-- YOUR CUSTOM CSS -->
+    <link href="/css/custom.css" rel="stylesheet">
+
+
+    <link href="https://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
+    <link rel="stylesheet" href="/css/bootnavbar.css" />
+
+</head>
+
+<body>
+
+    <div id="page" class="theia-exception">
+
+        <header class="header menu_2">
+            <div id="preloader">
+                <div data-loader="circle-side"></div>
+            </div><!-- /Preload -->
+            <!-- /Preload -->
+            <div id="logo">
+                <a href="/"><img src="/img/logo.png" width="149" height="42" data-retina="true" alt=""></a>
+            </div>
+            <ul id="top_menu">
+                <li><a href="#" class="search-overlay-menu-btn">Search</a></li>
+                {{#if currentUser}}
+                <li><a href="/profile">Hello, {{currentUser.name}}</a></li>
+                <li class="hidden_tablet">
+                    <a href="/logout" class="btn_1 rounded"><i class="fa fa-fw fa-sign-out"></i>Logout</a>
+                </li>
+                {{else}}
+                <li><a href="/login" class="login">Login</a></li>
+                <li class="hidden_tablet"><a href="/register" class="btn_1 rounded">Register</a></li>
+
+                {{/if}}
+
+            </ul>
+            <!-- /top_menu -->
+            <a href="#menu" class="btn_mobile">
+                <div class="hamburger hamburger--spin" id="hamburger">
+                    <div class="hamburger-box">
+                        <div class="hamburger-inner"></div>
+                    </div>
+                </div>
+            </a>
+            <nav id="menu" class="main-menu">
+                <ul>
+                    <li><span><a href="#">Categories</a></span>
+                        <ul>
+                            {{{generateNavFieldsList navFields}}}
+                        </ul>
+                    </li>
+                    {{{generateProfileOptions currentUser}}}
+
+                </ul>
+            </nav>
+            <!-- Search Menu -->
+            <div class="search-overlay-menu">
+                <span class="search-overlay-close"><span class="closebt"><i class="ti-close"></i></span></span>
+                <form role="search" id="searchform" method="GET" action="/search/">
+                    <input value="" name="q" type="search" placeholder="Search..." />
+                    <button type="submit"><i class="icon_search"></i>
+                    </button>
+                </form>
+            </div><!-- End Search Menu -->
+            <!-- End Search Menu -->
+            <nav class="navbar navbar-expand-lg navbar-light" id="main_navbar">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Categories
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li class="nav-item dropdown">
+                                    <a class="dropdown-item dropdown-toggle" href="#" id="navbarDropdown1" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        IT
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown1">
+                                        {{{generateNavFieldsList navFields}}}
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- /header -->
+
+        <main>
+            {{{body}}}
+        </main>
+        <!--/main-->
+
+        <footer>
+            <div class="container margin_120_95">
+                <div class="row">
+                    <div class="col-lg-5 col-md-12 p-r-5">
+                        <p><img src="/img/logo.png" width="149" height="42" data-retina="true" alt=""></p>
+                        <p>Mea nibh meis philosophia eu. Duis legimus efficiantur ea sea. Id placerat tacimates
+                            definitionem sea, prima quidam vim no. Duo nobis persecuti cu. Nihil facilisi indoctum an
+                            vix, ut delectus expetendis vis.</p>
+                        <div class="follow_us">
+                            <ul>
+                                <li>Follow us</li>
+                                <li><a href="#"><i class="ti-facebook"></i></a></li>
+                                <li><a href="#"><i class="ti-twitter-alt"></i></a></li>
+                                <li><a href="#"><i class="ti-google"></i></a></li>
+                                <li><a href="#"><i class="ti-pinterest"></i></a></li>
+                                <li><a href="#"><i class="ti-instagram"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 ml-lg-auto">
+                        <h5>Useful links</h5>
+                        <ul class="links">
+                            <li><a href="#">Admission</a></li>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Login</a></li>
+                            <li><a href="#">Register</a></li>
+                            <li><a href="#">News &amp; Events</a></li>
+                            <li><a href="#">Contacts</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5>Contact with Us</h5>
+                        <ul class="contacts">
+                            <li><a href="tel://61280932400"><i class="ti-mobile"></i> + 61 23 8093 3400</a></li>
+                            <li><a href="mailto:info@udema.com"><i class="ti-email"></i> info@udema.com</a></li>
+                        </ul>
+                        <div id="newsletter">
+                            <h6>Newsletter</h6>
+                            <div id="message-newsletter"></div>
+                            <form method="post" action="assets/newsletter.php" name="newsletter_form"
+                                id="newsletter_form">
+                                <div class="form-group">
+                                    <input type="email" name="email_newsletter" id="email_newsletter"
+                                        class="form-control" placeholder="Your email">
+                                    <input type="submit" value="Submit" id="submit-newsletter">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!--/row-->
+                <hr>
+                <div class="row">
+                    <div class="col-md-8">
+                        <ul id="additional_links">
+                            <li><a href="#">Terms and conditions</a></li>
+                            <li><a href="#">Privacy</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <div id="copy">© 2017 Udema</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!--/footer-->
+    </div>
+    <!-- page -->
+
+    <!-- COMMON SCRIPTS -->
+    <script src="/js/jquery-2.2.4.min.js"></script>
+    <script src="/js/common_scripts.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/assets/validate.js"></script>
+
+    <!-- SPECIFIC SCRIPTS -->
+    <script src="/layerslider/js/greensock.js"></script>
+    <script src="/layerslider/js/layerslider.transitions.js"></script>
+    <script src="/layerslider/js/layerslider.kreaturamedia.jquery.js"></script>
+    <script type="text/javascript">
+        'use strict';
+        $('#layerslider').layerSlider({
+            autoStart: true,
+            navButtons: false,
+            navStartStop: false,
+            showCircleTimer: false,
+            responsive: true,
+            responsiveUnder: 1280,
+            layersContainer: 1200,
+            skinsPath: 'layerslider/skins/'
+            // Please make sure that you didn't forget to add a comma to the line endings
+            // except the last line!
+        });
+    </script>
+    <script src="/js/responsive-paginate.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".pagination").rPage();
+        });
+    </script>
+
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script> -->
+    <script src="/js/bootnavbar.js"></script>
+    <script>
+        $(function () {
+            $("#main_navbar").bootnavbar();
+        });
+    </script>
+    <script src="/js/coursesFilters.js"></script>
+    <script src="/js/changePassword.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/24.0.0/classic/ckeditor.js"></script>
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#briefIntroduction'))
+            .then(editor => {
+                window.editor = editor;
+            })
+            .catch(error => {
+                console.error('There was a problem initializing the editor.', error);
+            });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/rater-js@1.0.1/index.min.js"></script>
+    <script src="/js/landing.js"></script>
+</body>
+
+</html>

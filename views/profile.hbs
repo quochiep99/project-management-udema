@@ -1,0 +1,134 @@
+<div id="profile-bg">
+    <div class="container margin_120_500">
+        {{#if success_msg}}
+        <div class="alert alert-success text-center" role="alert">
+            {{success_msg}}
+        </div>
+        {{/if}}
+
+        {{#if error_msg}}
+        <div class="alert alert-danger text-center" role="alert">
+            {{error_msg}}
+        </div>
+        {{/if}}
+        <div class="row justify-content-between">
+            <div class="col-lg-8">
+                <form action="/profile/basic-information" method="POST">
+                    <div class="form_title">
+                        <h3><strong>1</strong>Basic Information</h3>
+                    </div>
+                    <div class="step">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <span class="input">
+                                    <input class="input_field" type="text" name="name" value="{{currentUser.name}}">
+                                    <label class="input_label">
+                                        <span>Name</span>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <span class="input">
+                                    <input class="input_field" type="email" name="email" value="{{currentUser.email}}">
+                                    <label class="input_label">
+                                        <span>Email</span>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+
+                        {{#if isInstructor}}
+                        <div class="row">
+                            <div class="col-sm-12">                                
+                                <span class="input">
+                                    <label for="briefIntroduction">Brief Introduction</label>
+                                    <textarea class="form-control" id="briefIntroduction"
+                                    rows="3" name="briefIntroduction">{{currentUser.briefIntroduction}}</textarea>
+                                </span>
+                            </div>
+                        </div>
+                        {{/if}}
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <button type="submit" class="btn_1 full-width">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-3">
+                <form action="/profile/account-security" method="POST">
+                    <div class="form_title">
+                        <h3><strong>2</strong>Account Security</h3>
+                    </div>
+                    <div class="step">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <span class="input">
+                                    <input class="input_field" type="password" name="password" value="password"
+                                        disabled="disabled" readonly="readonly">
+                                    <label class="input_label">
+                                        <span>Password</span>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <span class="input">
+                                    <input class="input_field" type="password" name="currentPassword" required>
+                                    <label class="input_label">
+                                        <span>Current password</span>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <span class="input">
+                                    <input class="input_field" type="password" name="newPassword" required>
+                                    <label class="input_label">
+                                        <span>New password</span>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <span class="input">
+                                    <input class="input_field" type="password" name="confirmedPassword" required>
+                                    <label class="input_label">
+                                        <span>Confirm new password</span>
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <button type="submit" class="btn_1 full-width">Save</button>
+                            </div>
+                        </div>
+
+                        <div class="row" id="change-password">
+                            <div class="col-sm-12">
+                                <button type="button" class="btn_1 full-width">Change password</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+
+        </div>
+
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>

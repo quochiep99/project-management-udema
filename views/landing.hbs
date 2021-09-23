@@ -1,0 +1,272 @@
+<!-- Slider -->
+<div id="full-slider-wrapper">
+    <div id="layerslider" style="width:100%;height:750px;">
+        <!-- first slide -->
+        <div class="ls-slide" data-ls="slidedelay: 5000; transition2d:85;">
+            <img src="https://source.unsplash.com/VwsuhJ9uee4/1700x750" class="ls-bg" alt="Slide background">
+            <h3 class="ls-l slide_typo" style="top: 47%; left: 50%;"
+                data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;">
+                Education – Your <strong>Door</strong> To The Future</h3>
+            <p class="ls-l slide_typo_2" style="top:55%; left:50%;"
+                data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
+                Learners Today, Leaders Tomorrow
+            </p>
+            <a class="ls-l btn_1 rounded" style="top:65%; left:50%;white-space: nowrap;"
+                data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='#'>Read more</a>
+        </div>
+        <!-- second slide -->
+        <div class="ls-slide" data-ls="slidedelay:5000; transition2d:103;">
+            <img src="https://source.unsplash.com/tLZhFRLj6nY/1700x750" class="ls-bg" alt="Slide background">
+            <h3 class="ls-l slide_typo" style="top: 47%; left: 50%;"
+                data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;">
+                The <strong>Future</strong> Begins Here!</h3>
+            <p class="ls-l slide_typo_2" style="top:55%; left:50%;"
+                data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
+                Preparing Children For Success In Life
+            </p>
+            <a class="ls-l btn_1 rounded" style="top:65%; left:50%;white-space: nowrap;"
+                data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='#'>Read more</a>
+        </div>
+        <!-- third slide -->
+        <div class="ls-slide" data-ls="slidedelay: 5000; transition2d:5;">
+            <img src="https://source.unsplash.com/OMXPrCAhxrE/1700x750" class="ls-bg" alt="Slide background">
+            <h3 class="ls-l slide_typo" style="top:47%; left: 50%;"
+                data-ls="offsetxin:0;durationin:2000;delayin:1000;easingin:easeOutElastic;rotatexin:90;transformoriginin:50% bottom 0;offsetxout:0;rotatexout:90;transformoriginout:50% bottom 0;">
+                Better Education <strong>Develops</strong> The Nation</h3>
+            <p class="ls-l slide_typo_2" style="top:55%; left:50%;"
+                data-ls="durationin:2000;delayin:1000;easingin:easeOutElastic;">
+                Attitude Is A Little Thing That Makes A Big Difference.
+            </p>
+            <a class="ls-l btn_1 rounded" style="top:65%; left:50%;"
+                data-ls="durationin:2000;delayin:1400;easingin:easeOutElastic;" href='#'>Explore</a>
+        </div>
+    </div>
+</div>
+<!-- End layerslider -->
+
+<div class="features clearfix">
+    <div class="container">
+        <ul>
+            <li><i class="pe-7s-study"></i>
+                <h4>+200 courses</h4><span>Explore a variety of fresh topics</span>
+            </li>
+            <li><i class="pe-7s-cup"></i>
+                <h4>Expert teachers</h4><span>Find the right instructor for you</span>
+            </li>
+            <li><i class="pe-7s-target"></i>
+                <h4>Focus on target</h4><span>Increase your personal expertise</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /features -->
+
+<div class="container-fluid margin_120_0">
+    <div class="main_title_2">
+        <span><em></em></span>
+        <h2>Most Featured Courses</h2>
+        <!-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p> -->
+    </div>
+    <div id="reccomended" class="owl-carousel owl-theme">
+        {{#each mostFeaturedCourses}}
+        <div class="item">
+            <div class="box_grid">
+                <figure>
+                    <a href="#" class="wish_bt"></a>
+                    <a href="/it/{{this.field.name}}/courses/{{this._id}}">
+                        <img src="{{this.image3xURL}}" class="img-fluid" alt="">
+                    </a>
+                    <div class="price">
+                        ${{this.discountPrice}}
+                        <span class="original_price"><em>${{this.originalPrice}}</em></span>
+                    </div>
+
+                </figure>
+                <div class="wrapper">
+                    <small>{{getFieldName this.field.name}}</small>
+                    <h3>{{this.title}}</h3>
+                    <p>{{this.instructor.name}}</p>
+                    <!-- <div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i>
+                        <i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i>
+                        <small>(145)</small>
+                    </div> -->
+                    <div class="rating">
+                        <span>{{this.rating}}</span>
+                        <div class="ratingStar"></div> ({{this.reviews.length}} ratings)
+                    </div>
+                </div>
+                <ul>
+                    <!-- <li><i class="icon_clock_alt"></i> 1h 30min</li> -->
+                    <li><i class="fas fa-file-signature"></i> {{this.totalStudents}}</li>
+                    <li><i class="fas fa-pen-alt"></i> {{getTimeAgo this.updatedAt}}</li>
+                    <li><a href="#">Enroll now</a></li>
+                </ul>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    <!-- /carousel -->
+    <div class="container">
+        <p class="btn_home_align"><a href="#" class="btn_1 rounded">View all courses</a></p>
+    </div>
+    <!-- /container -->
+    <hr>
+</div>
+
+
+<div class="container margin_30_95">
+    <div class="main_title_2">
+        <span><em></em></span>
+        <h2>Most Viewed Courses</h2>
+        <!-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p> -->
+    </div>
+    <div id="landingMostViewedCourses" class="row">
+        {{#each mostViewedCourses}}
+        <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="box_grid wow">
+                <figure class="block-reveal">
+                    <div class="block-horizzontal"></div>
+                    <a href="#" class="wish_bt"></a>
+                    <a href="/it/{{this.field.name}}/courses/{{this._id}}"><img src="{{this.image3xURL}}"
+                            class="img-fluid" alt=""></a>
+                    <div class="price">
+                        ${{this.discountPrice}}
+                        <span class="original_price"><em>${{this.originalPrice}}</em></span>
+                    </div>
+                </figure>
+                <div class="wrapper">
+                    <small>{{getFieldName this.field.name}}</small>
+                    <h3>{{this.title}}</h3>
+                    <p>{{this.instructor.name}}</p>
+                    <!-- <div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i>
+                        <i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i>
+                        <small>(145)</small>
+                    </div> -->
+                    <div class="rating">
+                        <span>{{this.rating}}</span>
+                        <div class="ratingStar"></div> ({{this.reviews.length}} ratings)
+                    </div>
+                </div>
+                <ul>
+                    <!-- <li><i class="icon_clock_alt"></i> 1h 30min</li> -->
+                    <li><i class="far fa-eye"></i> {{this.numViews}}</li>
+                    <li><a href="#">Enroll now</a></li>
+                </ul>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<div class="container margin_30_95">
+    <div class="main_title_2">
+        <span><em></em></span>
+        <h2>Most Recent Courses</h2>
+        <!-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p> -->
+    </div>
+    <div id="landingMostRecentCourses" class="row">
+        {{#each mostRecentCourses}}
+        <div class="col-xl-4 col-lg-6 col-md-6">
+            <div class="box_grid wow">
+                <figure class="block-reveal">
+                    <div class="block-horizzontal"></div>
+                    <a href="#" class="wish_bt"></a>
+                    <a href="/it/{{this.field.name}}/courses/{{this._id}}"><img src="{{this.image3xURL}}"
+                            class="img-fluid" alt=""></a>
+                    <div class="price">
+                        ${{this.discountPrice}}
+                        <span class="original_price"><em>${{this.originalPrice}}</em></span>
+                    </div>
+                </figure>
+                <div class="wrapper">
+                    <small>{{getFieldName this.field.name}}</small>
+                    <h3>{{this.title}}</h3>
+                    <p>{{this.instructor.name}}</p>
+                    <!-- <div class="rating"><i class="icon_star voted"></i><i class="icon_star voted"></i>
+                        <i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i>
+                        <small>(145)</small>
+                    </div> -->
+                    <div class="rating">
+                        <span>{{this.rating}}</span>
+                        <div class="ratingStar"></div> ({{this.reviews.length}} ratings)
+                    </div>
+                </div>
+                <ul>
+                    <!-- <li><i class="far fa-eye"></i> {{this.numViews}}</li> -->
+                    <li><i class="fas fa-pen-alt"></i> {{getTimeAgo this.updatedAt}}</li>
+                    <li><a href="#">Enroll now</a></li>
+                </ul>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</div>
+<!-- /container -->
+
+{{#if mostRegisteredFields}}
+<div class="container margin_30_95">
+    <div class="main_title_2">
+        <span><em></em></span>
+        <h2>Most Registered Fields</h2>
+        <!-- <p>Cum doctus civibus efficiantur in imperdiet deterruisset.</p> -->
+    </div>
+
+    <div class="box_cart">
+        <table class="table table-striped cart-list">
+            <thead>
+                <tr>
+                    <th>
+                        Fields
+                    </th>
+                    <th>
+                        Total students
+                    </th>
+                    <th>
+                        Last Updated
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each mostRegisteredFields}}
+                <tr>
+                    <td class="options">
+                        <a href="/it/{{this.name}}/courses/">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span class="item_cart">{{getFieldName this.name}}</span>
+                        </a>
+                    </td>
+                    <td>
+                        {{this.totalStudents}}
+                    </td>
+                    <td>
+                        {{getTimeAgo this.updatedAt}}
+                    </td>
+                </tr>
+                {{/each}}
+
+            </tbody>
+        </table>
+
+    </div>
+
+
+</div>
+{{/if}}
+
+<div class="call_section">
+    <div class="container clearfix">
+        <div class="col-lg-5 col-md-6 float-right wow" data-wow-offset="250">
+            <div class="block-reveal">
+                <div class="block-vertical"></div>
+                <div class="box_1">
+                    <h3>Enjoy a great students community</h3>
+                    <p>Ius cu tamquam persequeris, eu veniam apeirian platonem qui, id aliquip voluptatibus
+                        pri. Ei mea primis ornatus disputationi. Menandri erroribus cu per, duo solet congue
+                        ut. </p>
+                    <a href="#" class="btn_1 rounded">Read more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--/call_section-->

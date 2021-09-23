@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Log in</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/styleLoginRegister.css">
+</head>
+
+<body>
+
+    <div class="main">
+
+        <section class="signup">
+            <div class="container">
+                <div class="signup-content">
+                    <form method="POST" id="signup-form" class="signup-form" action="/login">
+                        <h2 class="form-title"><a href="/"><img src="/img/logo_black.png" alt=""></a></h2>
+                        {{#if success_msg}}
+                        <div class="alert alert-success" role="alert">
+                            {{success_msg}}
+                        </div>
+                        {{/if}}
+
+                        {{#if error_msg}}
+                        <div class="alert alert-danger" role="alert">
+                            {{error_msg}}
+                        </div>
+                        {{/if}}
+                        {{#if passport_error}}
+                        <div class="alert alert-danger" role="alert">
+                            {{passport_error}}
+                        </div>
+                        {{/if}}
+
+                        <div style="margin-bottom: 10px;
+                        padding-bottom: 20px; position: relative">
+                            <!-- Google OAuth -->
+                            <a href="/auth/google" class="google btn">
+                                <i class="fab fa-google"></i> Continue with Google
+                            </a>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="email" id="email" placeholder="Your email" />
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="password" id="password"
+                                placeholder="Password" />
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="form-submit" value="Log in" />
+                        </div>
+                    </form>
+                    <p class="loginhere">
+                        Don't have any account yet ? <a href="/register" class="loginhere-link">Register here</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/validateLogin.js"></script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>

@@ -1,0 +1,32 @@
+/* Show it is fixed to the top */
+
+body {
+    min-height: 75rem;
+    padding-top: 4.5rem;
+}
+
+#player {
+    width: 100%;
+}
+
+#accordionFlushExample {
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+div>.accordion-body {
+    padding: 0;
+}
+
+/* Save progress */
+
+div[class='pt-3'] {
+    text-align: right;
+}
+
+/* Section title */
+
+button>b {
+    text-align: left;
+}
